@@ -1,3 +1,4 @@
+import 'package:estudo_hive/pages/home/widgets/contact_form.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -6,6 +7,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.lime[100],
       appBar: AppBar(
         title: Text(
@@ -15,7 +17,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      body: Center(),
+      body: ContactForm(),
     );
   }
 }

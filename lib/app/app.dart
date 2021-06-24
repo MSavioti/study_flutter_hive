@@ -10,7 +10,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.lime,
         textTheme: TextTheme(
-          bodyText2: TextStyle(color: Colors.white),
+          bodyText2: TextStyle(color: Colors.green[900]),
         ),
       ),
       home: HomePage(),
