@@ -5,23 +5,17 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-          textTheme: TextTheme(
-        bodyText2: TextStyle(color: Colors.white),
-      )),
-      home: new Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Contador',
-            style: TextStyle(
-              color: Colors.black,
-            ),
+    return Scaffold(
+      backgroundColor: Colors.lime[100],
+      appBar: AppBar(
+        title: Text(
+          'Hive DEMO',
+          style: TextStyle(
+            color: Colors.green[900],
           ),
-          backgroundColor: Colors.white,
         ),
-        body: Center(),
       ),
+      body: Center(),
     );
   }
 }

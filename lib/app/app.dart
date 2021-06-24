@@ -5,10 +5,14 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Shared Preferences DEMO',
+      title: 'Hive DEMO',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          textTheme: TextTheme(bodyText2: TextStyle(color: Colors.white))),
+        primarySwatch: Colors.lime,
+        textTheme: TextTheme(
+          bodyText2: TextStyle(color: Colors.white),
+        ),
+      ),
       home: HomePage(),
     );
   }
