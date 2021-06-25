@@ -1,4 +1,4 @@
-import 'package:estudo_hive/pages/home/widgets/contact_form.dart';
+import 'package:estudo_hive/pages/home/widgets/contact_list.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -17,7 +17,15 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      body: ContactForm(),
+      body: Center(
+        child: ContactList(),
+      ),
+      floatingActionButton: ElevatedButton(
+        onPressed: () {
+          Navigator.pushNamed(context, '/add');
+        },
+        child: Icon(Icons.add),
+      ),
     );
   }
 }

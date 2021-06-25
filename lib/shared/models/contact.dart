@@ -1,5 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
-part '../../repositories/hive/adapters/contact_adapter.g.dart';
+part 'contact.g.dart';
 
 @HiveType(typeId: 0)
 class Contact {

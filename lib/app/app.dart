@@ -1,3 +1,4 @@
+import 'package:estudo_hive/pages/add/add_contact_page.dart';
 import 'package:estudo_hive/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,11 @@ class App extends StatelessWidget {
           bodyText2: TextStyle(color: Colors.green[900]),
         ),
       ),
-      home: HomePage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => HomePage(),
+        '/add': (context) => AddContactPage(),
+      },
     );
   }
 }
