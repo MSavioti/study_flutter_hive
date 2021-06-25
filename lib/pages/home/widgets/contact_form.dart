@@ -1,3 +1,4 @@
+import 'package:estudo_hive/services/contact/contact_service.dart';
 import 'package:estudo_hive/shared/models/contact.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,7 @@ class _ContactFormState extends State<ContactForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
+  final ContactService _contactService = ContactService();
 
   String? _validateTextField(String? inputText) {
     if ((inputText == null) || (inputText.isEmpty)) {
@@ -57,19 +59,11 @@ class _ContactFormState extends State<ContactForm> {
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          content: Text(
-                            Contact(
-                              name: _nameController.text,
-                              phoneNumber: _phoneController.text,
-                            ).toString(),
-                          ),
-                        );
-                      },
+                    var contact = Contact(
+                      name: _nameController.text,
+                      phoneNumber: _phoneController.text,
                     );
+                    _contactService.addContact(contact);
                   }
                 },
                 child: Text('Submit'),

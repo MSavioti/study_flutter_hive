@@ -9,4 +9,8 @@ class ContactService {
     final Box<Contact> _contactsBox = await _hiveRepository.getContactsBox();
     return _contactsBox.values.toList();
   }
+
+  void addContact(Contact contact) {
+    _hiveRepository.addContact(contact);
+  }
 }
