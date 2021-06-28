@@ -71,6 +71,8 @@ class _ContactFormState extends State<ContactForm> {
                       phoneNumber: _phoneController.text,
                     );
                     _contactService.addContact(contact);
+                    Navigator.pop(context);
+                    Navigator.pushReplacementNamed(context, '/');
                   }
                 },
                 child: Text('Submit'),

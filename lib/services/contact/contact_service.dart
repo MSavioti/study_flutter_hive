@@ -5,14 +5,9 @@ import 'package:estudo_hive/shared/models/contact.dart';
 class ContactService {
   HiveRepository _hiveRepository = HiveRepository();
 
-  Future<List<Contact>> getContacts() async {
+  Future<Agenda?> loadAgenda() async {
     final Agenda? _agenda = await _hiveRepository.loadAgenda();
-
-    if (_agenda != null) {
-      return _agenda.contacts;
-    }
-
-    return [];
+    return _agenda;
   }
 
   void addContact(Contact contact) {

@@ -6,4 +6,10 @@ part 'agenda.g.dart';
 class Agenda {
   @HiveField(0)
   late List<Contact> contacts;
+
+  int get contactsCount => contacts.length;
+
+  Agenda() {
+    contacts = [];
+  }
 }

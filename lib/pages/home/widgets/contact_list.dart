@@ -1,5 +1,5 @@
 import 'package:estudo_hive/services/contact/contact_service.dart';
-import 'package:estudo_hive/shared/models/contact.dart';
+import 'package:estudo_hive/shared/models/agenda.dart';
 import 'package:flutter/material.dart';
 
 class ContactList extends StatelessWidget {
@@ -7,26 +7,23 @@ class ContactList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Contact>>(
-      future: _contactService.getContacts(),
-      builder: (context, snapshot) {
+    return FutureBuilder<Agenda?>(
+      future: _contactService.loadAgenda(),
+      builder: (_, snapshot) {
         if (!snapshot.hasData) {
           return CircularProgressIndicator();
         }
-        var contactList = snapshot.data;
 
-        if (contactList == null) {
-          return CircularProgressIndicator();
-        }
+        var agenda = snapshot.data;
 
         return SingleChildScrollView(
           child: ListView.builder(
-            itemCount: contactList.length,
+            itemCount: agenda!.contactsCount,
             shrinkWrap: true,
             itemBuilder: (_, i) {
               return ListTile(
-                title: Text(contactList[i].name),
-                subtitle: Text(contactList[i].phoneNumber),
+                title: Text(agenda.contacts[i].name),
+                subtitle: Text(agenda.contacts[i].phoneNumber),
               );
             },
           ),

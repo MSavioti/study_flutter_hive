@@ -16,29 +16,27 @@ class HiveRepository {
   }
 
   Future<void> addContact(Contact contact) async {
-    var box = await _getAgendaBox();
-    var agenda = box.get('agenda');
+    var agenda = await loadAgenda();
 
-    if (agenda != null) {
-      agenda.contacts.add(contact);
-      _updateAgenda(agenda);
-    }
-  }
-
-  Future<Box<Agenda>> _getAgendaBox() async {
-    if (Hive.isBoxOpen('agenda')) {
-      return Hive.box<Agenda>('agenda');
+    if (agenda == null) {
+      agenda = Agenda();
     }
 
-    return _openAgendaBox();
+    agenda.contacts.add(contact);
+    _updateAgenda(agenda);
   }
 
   Future<void> _updateAgenda(Agenda agenda) async {
-    var box = await _getAgendaBox();
-    await box.put('agenda', agenda);
+    try {
+      var box = await _openAgendaBox();
+      await box.put('agenda', agenda);
+    } catch (e) {
+      throw (e);
+    }
   }
 
   Future<Box<Agenda>> _openAgendaBox() async {
-    return await Hive.openBox<Agenda>('agenda');
+    var _agendaBox = await Hive.openBox<Agenda>('agenda');
+    return _agendaBox;
   }
 }
